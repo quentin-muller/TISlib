@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=None, w_label_step=0, h_label_step=0,  grid_step=1, title : str = None, colorMap=None, Max=None, Min=None, saveto=None):
+def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=None, w_label_step=0, h_label_step=0,  grid_step=1, title = None, colorMap=None, Max=None, Min=None, saveto=None):
     """
     Displays an Image (grayscale or RGB)
     
@@ -26,8 +26,7 @@ def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=No
     --------
     figure, ax (matplotlib)
     """
-    maxPixelsPerWidthUnitMajor = 2.5
-    maxPixelsPerWidthUnitMinor = 10
+    
     
     if(type(Images) == tuple or type(Images) == list):
         if(len(Images) > 1 and len(Images) <= 2):
@@ -63,7 +62,8 @@ def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=No
         
         
         
-        
+        maxPixelsPerWidthUnitMajor = 3
+        maxPixelsPerWidthUnitMinor = 10
 
         minImage = np.min(Image)
         maxImage = np.max(Image)
@@ -77,8 +77,8 @@ def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=No
             defaultMax = info.max
             defaultMin = info.min
         else:
-            defaultMax = np.min(Image)
-            defaultMin = np.max(Image)
+            defaultMax = 255
+            defaultMin = 0
 
 
         Max = defaultMax if Max is None else Max
@@ -96,11 +96,11 @@ def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=No
         im = ax.imshow(Image, cmap= 'gray' if colorMap is None else colorMap, vmin=Min, vmax=Max);
         
         if(Image.ndim == 2):
-            fig.colorbar(im, ax=ax)
+            #fig.colorbar(im, ax=ax)
             pass
 
         if(not title is None):
-            ax.set_title(title);
+            ax.set_title(title[i]);
 
         skipI = 0
         while(Image.shape[1] / width / skips[skipI] > maxPixelsPerWidthUnitMajor):
