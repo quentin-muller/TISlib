@@ -26,7 +26,8 @@ def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=No
     --------
     figure, ax (matplotlib)
     """
-    
+    maxPixelsPerWidthUnitMajor = 2.5
+    maxPixelsPerWidthUnitMinor = 10
     
     if(type(Images) == tuple or type(Images) == list):
         if(len(Images) > 1 and len(Images) <= 2):
@@ -62,8 +63,7 @@ def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=No
         
         
         
-        maxPixelsPerWidthUnitMajor = 3
-        maxPixelsPerWidthUnitMinor = 10
+        
 
         minImage = np.min(Image)
         maxImage = np.max(Image)
@@ -495,8 +495,7 @@ def zeroPadding(f,m):
     C = np.zeros((b,a))
     
     UD = np.zeros((b,w))
-    LR = np.zeros((h, a))
-    
+    LR = np.zeros((h,a))
     A = np.concatenate([C, UD, C], axis=1)
     B = np.concatenate([LR, f, LR], axis=1)
     fp = np.concatenate([A,B,A], axis=0)
