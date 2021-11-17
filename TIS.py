@@ -62,9 +62,6 @@ def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=No
             ax = axs.reshape(axs.size)[i]
         
         
-        
-        
-
         minImage = np.min(Image)
         maxImage = np.max(Image)
 
@@ -77,8 +74,8 @@ def showImage(Images, width=10, height=10, showGrid=True, HLines=None, VLines=No
             defaultMax = info.max
             defaultMin = info.min
         else:
-            defaultMax = np.min(Image)
-            defaultMin = np.max(Image)
+            defaultMin = np.min(Image)
+            defaultMax = np.max(Image)
 
 
         Max = defaultMax if Max is None else Max
